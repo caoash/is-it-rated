@@ -67,7 +67,7 @@ function run(nextContest, blog){
   reason.setAttribute('class', 'dynamic-text')    
   rated.setAttribute('class', 'dynamic-text')      
 
-  topContainer.style.marginTop = "60px"
+  topContainer.style.marginTop = "100px"
   contest.style.fontSize = "70px"
   second.style.fontSize = "60px"
   reason.style.fontSize = "70px"
