@@ -47,7 +47,6 @@ function run(nextContest, blog){
   const main = document.getElementById('main-text')
   const topContainer = document.getElementById('container')
 
-  const intro = document.createElement('h2')
   const contest = document.createElement('h1')
   const second = document.createElement('h2')
   const rated = document.createElement('h1')
@@ -55,14 +54,12 @@ function run(nextContest, blog){
   const reason = document.createElement('h1')
   var isItRated = (Math.floor(Math.random() * 2));
 
-  intro.textContent = "Codeforces Round"
   contest.textContent = nextContest
   second.textContent = "will " + (isItRated ? "fortunately " : "unfortunately ") + "be"
   rated.textContent = (isItRated ? "Rated" : "Unrated");
   third.textContent = "due to"
   reason.textContent = blog  
 
-  intro.setAttribute('class', 'static-text')
   second.setAttribute('class', 'static-text')
   third.setAttribute('class', 'static-text')
 
@@ -71,14 +68,12 @@ function run(nextContest, blog){
   rated.setAttribute('class', 'dynamic-text')      
 
   topContainer.style.marginTop = "60px"
-  intro.style.fontSize = "60px"
   contest.style.fontSize = "70px"
   second.style.fontSize = "60px"
   reason.style.fontSize = "70px"
   third.style.fontSize = "60px"
   rated.style.fontSize = "70px"
 
-  main.appendChild(intro)
   main.appendChild(contest)
   main.appendChild(second)
   main.appendChild(rated)
