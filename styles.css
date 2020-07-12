@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Sen&display=swap');
+
+body#container{
+	background-color: lightblue;
+}
+
+.static-text{
+	font-family: 'Sen', sans-serif;
+	font-size: 80px;
+	text-align: center;
+	font-weight: lighter;
+}
+
+.dynamic-text{
+	font-family: 'Sen', sans-serif;
+	font-size: 100px;
+	text-align: center;
+	font-weight: 600;
+}
