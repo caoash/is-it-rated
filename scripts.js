@@ -1,49 +1,46 @@
-async function grabContest() {
-  return fetch("https://codeforces.com/api/contest.list")
+var nextContest, blog;
+
+function grabContest() {
+
+  fetch("https://codeforces.com/api/contest.list")
     .then ((response) => {
       return response.json();
     })
     .then((data) => {
-        return data;
+        var contestList = data.result;
+        var res;
+        if(contestList.length == 0){
+          res = "No Upcoming Contests";
+        }
+        else{
+          res = contestList[0].name;
+        }
+        nextContest = res;
+        grabCF()
     })
     .catch((err) => {
     })
 }
 
-async function grabCF() {
-  return fetch("https://codeforces.com/api/recentActions?maxCount=100")
+function grabCF() {
+  fetch("https://codeforces.com/api/recentActions?maxCount=100")
     .then ((response) => {
       return response.json();
     })
     .then((data) => {
-      return data;
+      var num = Math.floor((Math.random() * 100));
+      var entry = data.result[num].blogEntry;
+      var title = entry.title;
+      while(entry.rating < 0 || entry.length > 70){
+        console.log(title.length)
+        console.log(title)
+        num = Math.floor((Math.random() * 100));
+      }
+      blog = title.substring(3, title.length - 4)
+      run(nextContest, blog)
     })
     .catch((err) => {
     })
-}
-
-async function grabData(){
-  const data = await this.grabContest()
-  var contestList = data.result;
-  var res;
-  if(contestList.length == 0){
-    res = "No Upcoming Contests";
-  }
-  else{
-    res = contestList[0].name;
-  }
-  var nextContest = res;
-
-  const cdata = await this.grabCF()
-  var num = Math.floor((Math.random() * 100));
-  while(cdata.result[num].blogEntry.rating < 10 || cdata.result[num].blogEntry.title.length > 70){
-    console.log(cdata.result[num].blogEntry.title.length)
-    console.log(cdata.result[num].blogEntry.title)
-    num = Math.floor((Math.random() * 100));
-  }
-  var res = cdata.result[num].blogEntry.title;
-  var blog = res.substring(3, res.length - 4)
-  run(nextContest, blog)
 }
 
 function run(nextContest, blog){
@@ -89,4 +86,4 @@ function run(nextContest, blog){
   main.appendChild(reason)
 }
 
-grabData()
+grabContest()
